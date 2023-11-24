@@ -17,9 +17,9 @@ import strawberry from "../../assets/images/strawberry.png";
 function index({ product }) {
   const [ openBasket, setOpenBasket ] = useState(false) ;
 
-  const productCount = useSelector(
+  const productQuantity = useSelector(
     (state) =>
-      state.products.products.find((item) => item.id === product.id).count
+      state.products.products.find((item) => item.id === product.id).quantity
   );
 
   return (
@@ -51,7 +51,7 @@ function index({ product }) {
           }
         />
 
-        {productCount !== 0 && <ButtonGroup setOpenBasket={setOpenBasket} product={product}/>}
+        {productQuantity !== 0 && <ButtonGroup setOpenBasket={setOpenBasket} product={product}/>}
       </div>
       <div className="flex items-end justify-between">
         <div className="mt-6">

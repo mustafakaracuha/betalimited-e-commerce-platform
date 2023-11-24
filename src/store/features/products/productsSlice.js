@@ -9,7 +9,7 @@ export const getAllProducts = createAsyncThunk(
   async () => {
     try {
       const data = await allProducts();
-      data.map((item) => (item.count = 0));
+      data.map((item) => (item.quantity = 0));
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
@@ -43,15 +43,15 @@ const productsSlice = createSlice({
       const product = state.products.find((item) => item.id === id);
 
       if (product) {
-        product.count += 1;
+        product.quantity += 1;
       }
     },
     decreaseCount: (state, action) => {
       const { id } = action.payload;
       const product = state.products.find((item) => item.id === id);
 
-      if (product && product.count > 0) {
-        product.count -= 1;
+      if (product && product.quantity > 0) {
+        product.quantity -= 1;
       }
     },
   },

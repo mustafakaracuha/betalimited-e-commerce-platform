@@ -82,7 +82,7 @@ function index({ product }) {
             </div>
           </div>
           <p>
-            ${product.quantity * product.price}
+            ${(product.quantity * product.price).toFixed(2)}
             {product.quantity !== 1 && (
               <button
                 onClick={() => handeDeleteMyProduct(product)}

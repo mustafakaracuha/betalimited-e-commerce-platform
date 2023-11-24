@@ -47,7 +47,7 @@ function index() {
           {myProducts.map((product) => (
             <div className="flex items-center justify-between" key={product.id}>
               <p className="w-[20rem] text-md text-gray-500">{product.name}</p>
-              <span>{product.quantity + "X" + "$" + product.price}</span>
+              <span>{product.quantity + "X" + "$" + product.price.toFixed(2)}</span>
             </div>
           ))}
         </div>

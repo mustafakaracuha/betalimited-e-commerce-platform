@@ -42,7 +42,7 @@ function index({ open, setOpenBasket }) {
       onClose={handleClose}
       className="drawer-basket"
     >
-      <div className="w-[30rem] h-auto bg-white p-10 max-sm:pl-20 ">
+      <div className="w-[30rem] h-auto bg-white p-10 max-sm:!mx-auto">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-semibold mb-4">Basket</h1>
           <CloseIcon

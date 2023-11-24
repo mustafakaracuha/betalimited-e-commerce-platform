@@ -7,9 +7,9 @@ import {
 
 function index({ product }) {
   const dispatch = useDispatch();
-  const productCount = useSelector(
+  const productQuantity = useSelector(
     (state) =>
-      state.products.products.find((item) => item.id === product.id).count
+      state.products.products.find((item) => item.id === product.id).quantity
   );
 
   const handleIncrease = () => {
@@ -22,7 +22,7 @@ function index({ product }) {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {productCount !== 0 && (
+      {productQuantity !== 0 && (
         <>
           <button
             onClick={handleDecrease}
@@ -30,7 +30,7 @@ function index({ product }) {
           >
             -
           </button>
-          <p className="mt-1 mb-1">{productCount}</p>
+          <p className="mt-1 mb-1">{productQuantity}</p>
         </>
       )}
       <button
