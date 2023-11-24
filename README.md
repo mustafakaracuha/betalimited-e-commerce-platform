@@ -33,10 +33,10 @@ The project is live and can be accessed on [Vercel](https://vercel.com/your-user
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/betalimited-ecommerce.git
+   git clone https://github.com/mustafakaracuha/betalimited-e-commerce-platform.git
 
-   ```bash
-   cd betalimited-ecommerce
+  
+   cd betalimited-e-commerce-platform
 
-   ```bash
+
    npm install
