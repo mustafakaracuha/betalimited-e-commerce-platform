@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUserSessionId } from "../../../api/auth/auth.service";
-import { clearMyProducts } from '../basket/basketSlice'; 
 
 export const createSession = createAsyncThunk(
   "user/createSession",
@@ -13,7 +12,6 @@ export const createSession = createAsyncThunk(
     }
   }
 );
-
 
 const initialState = {
   isLoggedIn: false,

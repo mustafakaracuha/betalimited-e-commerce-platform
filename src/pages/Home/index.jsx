@@ -15,8 +15,6 @@ function index() {
   const dispatch = useDispatch();
 
   const { products, isLoading } = useSelector((state) => state.products);
-  const { isLoggedIn } = useSelector((state) => state.auth);
-
 
   useEffect(() => {
     setDataFetch(true);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 
 import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
@@ -13,7 +12,6 @@ import TotalPrice from "./TotalPrice";
 
 import {
   getMyProducts,
-  getTotalPrice,
 } from "../../store/features/basket/basketSlice";
 
 function index({ open, setOpenBasket }) {

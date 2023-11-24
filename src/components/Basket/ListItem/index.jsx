@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import ListItem from "@mui/material/ListItem";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-import TotalPrice from "../TotalPrice";
 
 import offerFruits from "../../../assets/images/offerfruits.png";
 import lemon from "../../../assets/images/lemon.png";
@@ -14,7 +13,7 @@ import {
   getMyProducts,
   getTotalPrice,
 } from "../../../store/features/basket/basketSlice";
-import { toast } from "react-toastify";
+
 
 function index({ product }) {
   const dispatch = useDispatch();

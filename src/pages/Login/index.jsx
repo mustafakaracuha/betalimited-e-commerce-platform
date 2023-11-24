@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createSession, login } from "../../store/features/auth/authSlice";
 
 import logo from "../../assets/logo/logo-dark.png";
@@ -15,8 +15,6 @@ import logo from "../../assets/logo/logo-dark.png";
 function index() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const {myProducts} = useSelector(state => state.basket)
 
   const isAuthenticated = () => {
     const sessionId = sessionStorage.getItem("Session-ID");
