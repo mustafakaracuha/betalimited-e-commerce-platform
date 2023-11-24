@@ -42,7 +42,7 @@ function index({ open, setOpenBasket }) {
       onClose={handleClose}
       className="drawer-basket"
     >
-      <div className="w-[30rem] h-auto bg-white p-10">
+      <div className="w-[30rem] h-auto bg-white p-10 max-sm:pl-20 ">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-semibold mb-4">Basket</h1>
           <CloseIcon
@@ -53,6 +53,7 @@ function index({ open, setOpenBasket }) {
         </div>
         <Divider light />
         {myProducts.length > 0 ? (
+        <>
           <List
             sx={{
               width: "100%",
@@ -65,14 +66,13 @@ function index({ open, setOpenBasket }) {
               <ListItem product={product} />
             ))}
           </List>
+            <TotalPrice />
+          </>
         ) : (
           <div className="w-full p-14 flex flex-col items-center justify-center rounded-xl">
             <StoreIcon className="!text-[4rem] text-gray-400" />
             <p className="text-gray-400">Cart empty, please add items.</p>
           </div>
-        )}
-        {myProducts.length > 0 && (
-          <TotalPrice />
         )}
       </div>
     </Drawer>

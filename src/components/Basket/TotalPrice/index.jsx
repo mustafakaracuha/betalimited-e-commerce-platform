@@ -36,7 +36,7 @@ function index() {
   };
 
   return (
-    <div className="w-[25.4rem] fixed bottom-20 h-[10rem] bg-gray-100 rounded-xl -mb-10 flex items-start justify-center">
+    <div className="w-[25rem] max-sm:w-[23rem] fixed bottom-10 max-sm:right-7 h-[10rem] bg-gray-100 rounded-xl flex items-start justify-center">
       <div className="w-full px-5">
         <div className="flex items-center justify-between">
           <p className="text-lg mt-3 mb-1">Total Price</p>

@@ -62,10 +62,10 @@ function index() {
 
   return (
     <div className="w-full h-screen flex items-center justify-center mx-auto">
-      <div className="bg-white p-12 rounded-3xl shadow-xl shadow-gray-200 max-w-md w-full">
+      <div className="bg-white max-sm:shadow-none p-12 rounded-3xl shadow-xl shadow-gray-200 max-w-md w-full">
         <h2 className="text-3xl text-blue-500 font-bold mb-7 flex items-center justify-start">
           <img src={logo} className="mr-2" width={160} alt="" srcSet="" />{" "}
-          Fruiterer
+          <span>Fruiterer</span>
         </h2>
         <form
           className="flex flex-col items-center"

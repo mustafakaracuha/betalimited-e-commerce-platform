@@ -41,10 +41,10 @@ function index() {
       <AppBar />
       <Grid
         container
-        spacing={{ xs: 1, md: 5, lg: 0 }}
+        spacing={{ xs: 0, md: 5, lg: 0 }}
         columnGap={{xs:0, lg:0, xl:0}}
         rowSpacing={{xs:0, lg:0, xl:0}}
-        columnSpacing={{xs:-5, md:0}}
+        columnSpacing={{xs:5, sm:5, md:0}}
         columns={{ xs: 1, sm: 1, md: 8, lg: 12, xl: 12 }}
       >
         {products?.map((product, index) => (

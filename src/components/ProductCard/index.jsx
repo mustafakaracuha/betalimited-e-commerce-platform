@@ -23,7 +23,7 @@ function index({ product }) {
   );
 
   return (
-    <div className="w-[22rem] h-[30rem] bg-gray-200 rounded-3xl p-5 transition-all duration-300 group cursor-pointer">
+    <div className="w-full h-full bg-gray-200 rounded-3xl p-5 transition-all duration-300 group cursor-pointer">
       <div className="w-full h-[19rem] bg-white flex flex-col items-center justify-center rounded-2xl relative">
         <Chip
           icon={<SellIcon className="text-lg !ml-2" />}

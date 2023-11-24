@@ -57,12 +57,12 @@ function index() {
             className="flex items-center justify-start"
           >
             <img src={logo} className="mr-2" width={160} />{" "}
-            <span className="mt-2 font-bold">Fruiterer</span>
+            <span className="mt-2 font-bold max-sm:hidden">Fruiterer</span>
           </Typography>
           <Search />
           {sessionId ? (
             <div className="flex items-center justify-center">
-              <p className="capitalize">{userName}</p>
+              <p className="capitalize max-sm:hidden">{userName}</p>
               <IconButton
                 size="large"
                 aria-label="account of current user"
