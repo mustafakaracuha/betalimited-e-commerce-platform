@@ -35,8 +35,12 @@ The project is live and can be accessed on [Vercel](https://vercel.com/your-user
    ```bash
    git clone https://github.com/mustafakaracuha/betalimited-e-commerce-platform.git
 
-  
+2. **Navigate to the Project Directory:**
+
+   ```bash
    cd betalimited-e-commerce-platform
 
+3. **Install Dependencies:**
 
+   ```bash
    npm install
