@@ -1,6 +1,5 @@
 # BetaLimited E-Commerce Platform
 
-![BetaLimited Logo](link/to/logo.png)
 
 Welcome to BetaLimited E-Commerce Platform, a dynamic and responsive web application built with React.js and Material-UI components.
 
@@ -26,7 +25,7 @@ The user interface is designed to be compatible across desktop, tablet, and mobi
 
 ## Deployment
 
-The project is live and can be accessed on [Vercel](https://vercel.com/your-username/betalimited-ecommerce).
+The project is live and can be accessed on [Vercel](https://betalimited-e-commerce-platform.vercel.app).
 
 ## Getting Started
 
