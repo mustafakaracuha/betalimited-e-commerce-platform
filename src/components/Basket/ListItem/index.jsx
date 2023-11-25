@@ -1,9 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import ListItem from "@mui/material/ListItem";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { CircularProgress } from "@mui/material";
 
 import offerFruits from "../../../assets/images/offerfruits.png";
 import lemon from "../../../assets/images/lemon.png";
@@ -14,13 +15,12 @@ import {
   getTotalPrice,
 } from "../../../store/features/basket/basketSlice";
 
-
 function index({ product }) {
   const dispatch = useDispatch();
 
   const calculateTotalPrice = (products) => {
     return products?.reduce((total, product) => {
-      return total + product.quantity * product.price;
+      return (product.quantity * product.price) + total;
     }, 0);
   };
 
@@ -83,17 +83,14 @@ function index({ product }) {
           </div>
           <p>
             ${product.price}
-             {
-             product.quantity >= 1 && (
+            {product.quantity >= 1 && (
               <button
-              onClick={() => handeDeleteMyProduct(product)}
-              className="w-10 h-10 bg-rose-100 transition-all duration-300 hover:bg-rose-200 flex items-center justify-center p-1 rounded-xl absolute -top-3 -right-3 ring-4 ring-white"
-            >
-              <DeleteIcon className="!text-[1.3rem] text-rose-400" />
-            </button>
-              )
-             
-             }
+                onClick={() => handeDeleteMyProduct(product)}
+                className="w-10 h-10 bg-rose-100 transition-all duration-300 hover:bg-rose-200 flex items-center justify-center p-1 rounded-xl absolute -top-3 -right-3 ring-4 ring-white"
+              >
+                  <DeleteIcon className="!text-[1.3rem] text-rose-400" />
+              </button>
+            )}
           </p>
         </div>
       </div>

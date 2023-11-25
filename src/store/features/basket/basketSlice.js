@@ -40,7 +40,8 @@ export const deleteBasketProducts = createAsyncThunk(
 
 const initialState = {
   myProducts: [],
-  isLoading: false,
+  isAddBasketLoading: false,
+  isDeleteBasketLoading: false,
   totalPrice: "",
 };
 
@@ -75,24 +76,24 @@ const productsSlice = createSlice({
 
     // Add my products
     builder.addCase(addBasketProducts.pending, (state, action) => {
-      state.isLoading = true;
+      state.isAddBasketLoading = true;
     });
     builder.addCase(addBasketProducts.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isAddBasketLoading = false;
     });
     builder.addCase(addBasketProducts.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isAddBasketLoading = false;
     });
 
     // Delete my products
     builder.addCase(deleteBasketProducts.pending, (state, action) => {
-      state.isLoading = true;
+      state.isDeleteBasketLoading = true;
     });
     builder.addCase(deleteBasketProducts.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isDeleteBasketLoading = false;
     });
     builder.addCase(deleteBasketProducts.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isDeleteBasketLoading = false;
     });
   },
 });

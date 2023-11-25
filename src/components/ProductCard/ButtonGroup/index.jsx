@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
+import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from "react-toastify";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -12,6 +13,8 @@ import { addBasketProducts } from "../../../store/features/basket/basketSlice";
 
 function index({ product, setOpenBasket }) {
   const { sessionId } = useSelector((state) => state.auth);
+  const { isAddBasketLoading } = useSelector((state) => state.basket);
+
   const dispatch = useDispatch();
 
   const handleAddProduct = () => {
@@ -44,7 +47,14 @@ function index({ product, setOpenBasket }) {
       </Button>
       {sessionId && (
         <Button onClick={handleAddProduct} className="!text-blue-400">
-          <ShoppingCartIcon />
+          {
+          isAddBasketLoading ? (
+            <CircularProgress size={22}/>
+            )
+          : (
+            <ShoppingCartIcon />
+            )
+          }
         </Button>
       )}
     </ButtonGroup>
