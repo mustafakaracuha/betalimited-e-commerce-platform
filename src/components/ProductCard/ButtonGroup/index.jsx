@@ -18,8 +18,6 @@ function index({ product, setOpenBasket }) {
   const { isAddBasketLoading } = useSelector((state) => state.basket);
 
   const dispatch = useDispatch();
-
-
   const handleAddProduct = (productId) => {
     setLoadingProductId(productId);
     dispatch(addBasketProducts(product))
