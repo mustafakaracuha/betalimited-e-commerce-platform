@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -12,12 +12,16 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { addBasketProducts } from "../../../store/features/basket/basketSlice";
 
 function index({ product, setOpenBasket }) {
+  const [loadingProductId, setLoadingProductId] = useState(null);
+
   const { sessionId } = useSelector((state) => state.auth);
   const { isAddBasketLoading } = useSelector((state) => state.basket);
 
   const dispatch = useDispatch();
 
-  const handleAddProduct = () => {
+
+  const handleAddProduct = (productId) => {
+    setLoadingProductId(productId);
     dispatch(addBasketProducts(product))
       .unwrap()
       .then((oResult) => {
@@ -46,9 +50,9 @@ function index({ product, setOpenBasket }) {
         <FavoriteIcon />
       </Button>
       {sessionId && (
-        <Button onClick={handleAddProduct} className="!text-blue-400">
+        <Button onClick={() => handleAddProduct(product.id)} className="!text-blue-400">
           {
-          isAddBasketLoading ? (
+          isAddBasketLoading && product.id === loadingProductId ?  (
             <CircularProgress size={22}/>
             )
           : (
