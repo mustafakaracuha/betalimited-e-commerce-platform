@@ -2,14 +2,11 @@ import React from "react";
 import Divider from "@mui/material/Divider";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getMyProducts,
-  getTotalPrice,
-} from "../../../store/features/basket/basketSlice";
+import { getTotalPrice } from "../../../store/features/basket/basketSlice";
 
-function index() {
+function index({ myProducts, open }) {
   const dispatch = useDispatch();
-  const { myProducts, totalPrice } = useSelector((state) => state.basket);
+  const { totalPrice } = useSelector((state) => state.basket);
 
   const calculateTotalPrice = (products) => {
     return products?.reduce((total, product) => {
@@ -19,20 +16,11 @@ function index() {
 
   useEffect(() => {
     getMyBasketProduct();
-  }, []);
+  }, [open]);
 
   const getMyBasketProduct = () => {
-    dispatch(getMyProducts())
-      .unwrap()
-      .then((oResult) => {
-        if (oResult) {
-          let totalPrice = calculateTotalPrice(oResult);
-          dispatch(getTotalPrice(totalPrice.toFixed(2)));
-        }
-      })
-      .catch((oError) => {
-        console.log(oError);
-      });
+    let totalPrice = calculateTotalPrice(myProducts);
+    dispatch(getTotalPrice(totalPrice));
   };
 
   return (
@@ -44,12 +32,22 @@ function index() {
         </div>
         <Divider light />
         <div className="w-full mt-3">
-          {myProducts.map((product) => (
-            <div className="flex items-center justify-between" key={product.id}>
-              <p className="w-[20rem] text-md text-gray-500">{product.name}</p>
-              <span>{product.quantity + "X" + "$" + product.price.toFixed(2)}</span>
-            </div>
-          ))}
+          {myProducts.map(
+            (product) =>
+              product.quantity >= 1 && (
+                <div
+                  className="flex items-center justify-between"
+                  key={product.id}
+                >
+                  <p className="w-[20rem] text-md text-gray-500">
+                    {product.name}
+                  </p>
+                  <span>
+                    {product.quantity + "X" + "$" + product.price.toFixed(2)}
+                  </span>
+                </div>
+              )
+          )}
         </div>
       </div>
     </div>

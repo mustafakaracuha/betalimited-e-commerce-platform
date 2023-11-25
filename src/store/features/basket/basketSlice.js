@@ -41,9 +41,8 @@ export const deleteBasketProducts = createAsyncThunk(
 const initialState = {
   myProducts: [],
   isLoading: false,
-  totalPrice : ""
+  totalPrice: "",
 };
-
 
 const productsSlice = createSlice({
   name: "products",
@@ -52,8 +51,8 @@ const productsSlice = createSlice({
     clearMyProducts: (state) => {
       state.myProducts = [];
     },
-    getTotalPrice: (state,action) => {
-      state.totalPrice = action.payload;
+    getTotalPrice: (state, action) => {
+      state.totalPrice = action.payload.toFixed(2);
     },
   },
   extraReducers: (builder) => {
@@ -65,7 +64,8 @@ const productsSlice = createSlice({
       if (action.payload === "Cart is empty.") {
         state.myProducts = [];
       } else {
-        state.myProducts = action.payload;
+        let newData = action.payload.filter((item) => item.quantity >= 1)
+        state.myProducts = newData
       }
       state.isLoading = false;
     });
@@ -97,5 +97,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { clearMyProducts,getTotalPrice } = productsSlice.actions;
+export const { clearMyProducts, getTotalPrice } = productsSlice.actions;
 export default productsSlice.reducer;

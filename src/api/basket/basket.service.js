@@ -14,22 +14,6 @@ export const getMyBasketProducts = async () => {
     });
 };
 
-// export const addMyBasketProducts = async (product) => {
-//   const {id , quantity } = product
-
-//   return await axios
-//     .post(
-//       API_URL + `/add-to-cart?id=${id}`, quantity,
-//       {
-//         headers: {
-//           "Session-Id": sessionStorage.getItem("Session-ID"),
-//         },
-//       }
-//     )
-//     .then((response) => {
-//       return response.data;
-//     });
-// };
 
 export const addMyBasketProducts = async (product) => {
   const { id, quantity } = product;

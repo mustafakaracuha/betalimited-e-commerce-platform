@@ -24,6 +24,8 @@ import { Link } from "react-router-dom";
 function index() {
   const [anchorEl, setAnchorEl] = useState(null);
   const { userName, sessionId } = useSelector((state) => state.auth);
+  const { myProducts } = useSelector((state) => state.basket);
+
   const [ openBasket, setOpenBasket ] = useState(false) ;
 
 

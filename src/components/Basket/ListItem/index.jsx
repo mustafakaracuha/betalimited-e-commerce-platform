@@ -35,7 +35,7 @@ function index({ product }) {
             .then((oResult) => {
               if (oResult) {
                 let totalPrice = calculateTotalPrice(oResult);
-                dispatch(getTotalPrice(totalPrice.toFixed(2)));
+                dispatch(getTotalPrice(totalPrice));
               }
             })
             .catch((oError) => {
@@ -82,15 +82,18 @@ function index({ product }) {
             </div>
           </div>
           <p>
-            ${(product.quantity * product.price).toFixed(2)}
-            {product.quantity !== 1 && (
+            ${product.price}
+             {
+             product.quantity >= 1 && (
               <button
-                onClick={() => handeDeleteMyProduct(product)}
-                className="w-10 h-10 bg-rose-100 transition-all duration-300 hover:bg-rose-200 flex items-center justify-center p-1 rounded-xl absolute -top-3 -right-3 ring-4 ring-white"
-              >
-                <DeleteIcon className="!text-[1.3rem] text-rose-400" />
-              </button>
-            )}
+              onClick={() => handeDeleteMyProduct(product)}
+              className="w-10 h-10 bg-rose-100 transition-all duration-300 hover:bg-rose-200 flex items-center justify-center p-1 rounded-xl absolute -top-3 -right-3 ring-4 ring-white"
+            >
+              <DeleteIcon className="!text-[1.3rem] text-rose-400" />
+            </button>
+              )
+             
+             }
           </p>
         </div>
       </div>

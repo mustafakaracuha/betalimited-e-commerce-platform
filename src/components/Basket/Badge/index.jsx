@@ -7,9 +7,9 @@ function index() {
   const { myProducts } = useSelector(state => state.basket)
 
   return (
-    <Badge badgeContent={myProducts.length} color="warning">
-    <ShoppingCartIcon className='!text-3xl' color="inherit" />
-   </Badge>
+        <Badge badgeContent={myProducts.length} color="warning">
+        <ShoppingCartIcon className='!text-3xl' color="inherit" />
+       </Badge>
   )
 }
 

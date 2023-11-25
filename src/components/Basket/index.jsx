@@ -52,7 +52,7 @@ function index({ open, setOpenBasket }) {
           />
         </div>
         <Divider light />
-        {myProducts.length > 0 ? (
+        {myProducts.length >= 1 ? (
         <>
           <List
             sx={{
@@ -63,10 +63,14 @@ function index({ open, setOpenBasket }) {
             }}
           >
             {myProducts.map((product) => (
+              product.quantity >= 1 &&
               <ListItem product={product} />
             ))}
           </List>
-            <TotalPrice />
+           {myProducts.map((product) => (
+              product.quantity >= 1 &&
+              <TotalPrice myProducts={myProducts} open={open}/>
+            ))}
           </>
         ) : (
           <div className="w-full p-14 flex flex-col items-center justify-center rounded-xl">
