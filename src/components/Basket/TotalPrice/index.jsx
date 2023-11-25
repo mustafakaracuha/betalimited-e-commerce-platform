@@ -10,7 +10,7 @@ function index({ myProducts, open }) {
 
   const calculateTotalPrice = (products) => {
     return products?.reduce((total, product) => {
-      return total + product.quantity * product.price;
+      return product.quantity * product.price + total;
     }, 0);
   };
 
