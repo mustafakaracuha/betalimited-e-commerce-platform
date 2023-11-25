@@ -12,24 +12,29 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { addBasketProducts } from "../../../store/features/basket/basketSlice";
 
 function index({ product, setOpenBasket }) {
+  const [loadingProductId, setLoadingProductId] = useState(null);
   const { sessionId } = useSelector((state) => state.auth);
   const { isAddBasketLoading } = useSelector((state) => state.basket);
 
   const dispatch = useDispatch();
 
-  const handleAddProduct = () => {
+  const handleAddProduct = (productId) => {
+    setLoadingProductId(productId);
+
     dispatch(addBasketProducts(product))
       .unwrap()
       .then((oResult) => {
         if (oResult) {
           toast.success("Added to cart");
           setTimeout(() => {
+            setLoadingProductId(null);
             setOpenBasket(true);
           }, 600);
         }
       })
       .catch((oError) => {
         toast.error(oError);
+        setLoadingProductId(null);
       });
   };
 
@@ -47,11 +52,11 @@ function index({ product, setOpenBasket }) {
       </Button>
       {sessionId && (
         <Button
-          onClick={() => handleAddProduct()}
+        onClick={() => handleAddProduct(product.id)}
           className="!text-blue-400"
           disabled={isAddBasketLoading}
         >
-          {isAddBasketLoading ? (
+          {isAddBasketLoading && loadingProductId === product.id ? (
             <CircularProgress size={22} />
           ) : (
             <ShoppingCartIcon />
