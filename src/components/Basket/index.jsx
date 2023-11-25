@@ -9,9 +9,8 @@ import StoreIcon from "@mui/icons-material/Store";
 
 import ListItem from "./ListItem";
 import TotalPrice from "./TotalPrice";
-
 import {
-  getMyProducts,
+  getMyProducts, getTotalPrice,
 } from "../../store/features/basket/basketSlice";
 
 function index({ open, setOpenBasket }) {
@@ -20,10 +19,26 @@ function index({ open, setOpenBasket }) {
   const dispatch = useDispatch();
   const { myProducts } = useSelector((state) => state.basket);
 
+  const calculateTotalPrice = (products) => {
+    return products?.reduce((total, product) => {
+      return total + (product.quantity * product.price);
+    }, 0);
+  };
+
   useEffect(() => {
     setDataFetch(true);
     if (dataFetch === true && open === true) {
       dispatch(getMyProducts())
+      .unwrap()
+      .then((oResult) => {
+        if (oResult) {
+          let totalPrice = calculateTotalPrice(oResult);
+          dispatch(getTotalPrice(totalPrice));
+        }
+      })
+      .catch((oError) => {
+        toast.error(oError);
+      });
     }
     return () => {
       setDataFetch(false);
@@ -69,7 +84,7 @@ function index({ open, setOpenBasket }) {
           </List>
            {myProducts.map((product) => (
               product.quantity >= 1 &&
-              <TotalPrice myProducts={myProducts} open={open}/>
+              <TotalPrice myProducts={myProducts}/>
             ))}
           </>
         ) : (

@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -12,21 +12,19 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { addBasketProducts } from "../../../store/features/basket/basketSlice";
 
 function index({ product, setOpenBasket }) {
-  const [loadingProductId, setLoadingProductId] = useState(null);
-
   const { sessionId } = useSelector((state) => state.auth);
   const { isAddBasketLoading } = useSelector((state) => state.basket);
 
   const dispatch = useDispatch();
-  const handleAddProduct = (productId) => {
-    setLoadingProductId(productId);
+
+  const handleAddProduct = () => {
     dispatch(addBasketProducts(product))
       .unwrap()
       .then((oResult) => {
         if (oResult) {
           toast.success("Added to cart");
           setTimeout(() => {
-          setOpenBasket(true);
+            setOpenBasket(true);
           }, 600);
         }
       })
@@ -48,15 +46,16 @@ function index({ product, setOpenBasket }) {
         <FavoriteIcon />
       </Button>
       {sessionId && (
-        <Button onClick={() => handleAddProduct(product.id)} className="!text-blue-400">
-          {
-          isAddBasketLoading && product.id === loadingProductId ?  (
-            <CircularProgress size={22}/>
-            )
-          : (
+        <Button
+          onClick={() => handleAddProduct()}
+          className="!text-blue-400"
+          disabled={isAddBasketLoading}
+        >
+          {isAddBasketLoading ? (
+            <CircularProgress size={22} />
+          ) : (
             <ShoppingCartIcon />
-            )
-          }
+          )}
         </Button>
       )}
     </ButtonGroup>

@@ -1,27 +1,11 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getTotalPrice } from "../../../store/features/basket/basketSlice";
+import { useSelector } from "react-redux";
 
-function index({ myProducts, open }) {
-  const dispatch = useDispatch();
+function index({ myProducts }) {
+ 
   const { totalPrice } = useSelector((state) => state.basket);
 
-  const calculateTotalPrice = (products) => {
-    return products?.reduce((total, product) => {
-      return (product.quantity * product.price) + total;
-    }, 0);
-  };
-
-  useEffect(() => {
-    getMyBasketProduct();
-  }, [open]);
-
-  const getMyBasketProduct = () => {
-    let totalPrice = calculateTotalPrice(myProducts);
-    dispatch(getTotalPrice(totalPrice));
-  };
 
   return (
     <div className="w-[25rem] max-sm:w-[23rem] fixed bottom-10 max-sm:right-7 h-[10rem] bg-gray-100 rounded-xl flex items-start justify-center">
