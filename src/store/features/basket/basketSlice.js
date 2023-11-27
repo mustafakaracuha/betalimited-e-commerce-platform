@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 import {
   getMyBasketProducts,
   addMyBasketProducts,
@@ -80,6 +82,8 @@ const productsSlice = createSlice({
     });
     builder.addCase(addBasketProducts.fulfilled, (state, action) => {
       state.isAddBasketLoading = false;
+      toast.success("Added to cart");
+      
     });
     builder.addCase(addBasketProducts.rejected, (state, action) => {
       state.isAddBasketLoading = false;
@@ -91,6 +95,7 @@ const productsSlice = createSlice({
     });
     builder.addCase(deleteBasketProducts.fulfilled, (state, action) => {
       state.isDeleteBasketLoading = false;
+      toast.success("Your cart updated");
     });
     builder.addCase(deleteBasketProducts.rejected, (state, action) => {
       state.isDeleteBasketLoading = false;

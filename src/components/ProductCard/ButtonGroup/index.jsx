@@ -25,7 +25,6 @@ function index({ product, setOpenBasket }) {
       .unwrap()
       .then((oResult) => {
         if (oResult) {
-          toast.success("Added to cart");
           setTimeout(() => {
             setLoadingProductId(null);
             setOpenBasket(true);

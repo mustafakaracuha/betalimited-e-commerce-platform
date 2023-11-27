@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 
 import ListItem from "@mui/material/ListItem";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -29,7 +28,6 @@ function index({ product }) {
       .unwrap()
       .then((oResult) => {
         if (oResult) {
-          toast.success("Your cart updated");
           dispatch(getMyProducts())
             .unwrap()
             .then((oResult) => {
