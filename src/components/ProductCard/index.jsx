@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
+import { motion } from "framer-motion";
+
+
 import Rating from "@mui/material/Rating";
 import Chip from "@mui/material/Chip";
 
@@ -8,6 +11,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import Count from "./QuantityButtons";
 import ButtonGroup from "./ButtonGroup";
 import Basket from "../Basket";
+
 
 import offerFruits from "../../assets/images/offerfruits.png";
 import lemon from "../../assets/images/lemon.png";
@@ -22,7 +26,11 @@ function index({ product }) {
   );
 
   return (
-    <div className="w-full h-full bg-gray-200 rounded-3xl p-5 transition-all duration-300 group cursor-pointer">
+    <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{type: 'spring', duration: 0.3 }}
+    className="w-full h-full bg-gray-200 rounded-3xl p-5 transition-all duration-300 group cursor-pointer">
       <div className="w-full h-[19rem] bg-white flex flex-col items-center justify-center rounded-2xl relative">
         <Chip
           icon={<SellIcon className="text-lg !ml-2" />}
@@ -30,7 +38,10 @@ function index({ product }) {
           label={product.discount}
           className=" absolute top-3 left-4"
         />
-        <img
+        <motion.img
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{type: 'spring', duration: 0.3 }}
           className="transition-all duration-300 group-hover:rotate-12 group-hover:scale-110"
           src={
             product.name === "Offer Fruits"
@@ -71,7 +82,7 @@ function index({ product }) {
         <Count product={product} />
         <Basket open={openBasket} setOpenBasket={setOpenBasket} />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
