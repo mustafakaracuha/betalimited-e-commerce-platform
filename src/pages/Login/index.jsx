@@ -22,7 +22,7 @@ function index() {
 
   useEffect(() => {
     if (isAuthenticated()) {
-      return navigate("/home");
+      return navigate("/products");
     }
   }, []);
 
