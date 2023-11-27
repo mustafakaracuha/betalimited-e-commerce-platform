@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { validationSchema } from "./validationSchema";
 
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 
@@ -75,13 +74,10 @@ function index() {
           onSubmit={formik.handleSubmit}
         >
           <div className="mb-4 w-full">
-            <TextField
-              color="primary"
-              fullWidth
+            <input
               id="username"
-              label="Username"
-              variant="outlined"
-              size="normal"
+              placeholder="Username"
+              className="w-full h-14 bg-gray-100 rounded-xl border-2 border-white transition-all duration-300 outline-none pl-4 focus:!border-blue-400"
               {...formik.getFieldProps("username")}
             />
             {formik.touched.username && formik.errors.username && (
@@ -89,13 +85,11 @@ function index() {
             )}
           </div>
           <div className="mb-4 w-full">
-            <TextField
-              fullWidth
+            <input
+              placeholder="Password"
               id="password"
               type="password"
-              label="Password"
-              variant="outlined"
-              size="normal"
+              className="w-full h-14 bg-gray-100 border-2 border-white transition-all duration-300 rounded-xl outline-none pl-4 focus:!border-blue-400"
               {...formik.getFieldProps("password")}
             />
             {formik.touched.password && formik.errors.password && (
