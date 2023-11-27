@@ -82,6 +82,7 @@ const productsSlice = createSlice({
     });
     builder.addCase(addBasketProducts.fulfilled, (state, action) => {
       state.isAddBasketLoading = false;
+      
       toast.success("Added to cart");
       
     });

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import Rating from "@mui/material/Rating";
@@ -9,13 +9,12 @@ import Count from "./QuantityButtons";
 import ButtonGroup from "./ButtonGroup";
 import Basket from "../Basket";
 
-
 import offerFruits from "../../assets/images/offerfruits.png";
 import lemon from "../../assets/images/lemon.png";
 import strawberry from "../../assets/images/strawberry.png";
 
 function index({ product }) {
-  const [ openBasket, setOpenBasket ] = useState(false) ;
+  const [openBasket, setOpenBasket] = useState(false);
 
   const productQuantity = useSelector(
     (state) =>
@@ -51,7 +50,9 @@ function index({ product }) {
           }
         />
 
-        {productQuantity !== 0 && <ButtonGroup setOpenBasket={setOpenBasket} product={product}/>}
+        {productQuantity !== 0 && (
+          <ButtonGroup setOpenBasket={setOpenBasket} product={product} />
+        )}
       </div>
       <div className="flex items-end justify-between">
         <div className="mt-6">
@@ -68,7 +69,7 @@ function index({ product }) {
           </p>
         </div>
         <Count product={product} />
-        <Basket open={openBasket} setOpenBasket={setOpenBasket }/>
+        <Basket open={openBasket} setOpenBasket={setOpenBasket} />
       </div>
     </div>
   );

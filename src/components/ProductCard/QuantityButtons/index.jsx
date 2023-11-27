@@ -1,5 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+
 import {
   increaseCount,
   decreaseCount,
@@ -30,7 +32,14 @@ function index({ product }) {
           >
             -
           </button>
-          <p className="mt-1 mb-1">{productQuantity}</p>
+          <motion.p
+            className="mt-1 mb-1"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{type: 'spring', duration: 0.3 }}
+          >
+            {productQuantity}
+          </motion.p>
         </>
       )}
       <button

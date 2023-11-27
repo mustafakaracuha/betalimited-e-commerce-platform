@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { motion } from "framer-motion";
+
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -38,31 +40,38 @@ function index({ product, setOpenBasket }) {
   };
 
   return (
-    <ButtonGroup
-      className="mt-5 mb-10 bg-white shadow-lg !rounded-xl transition-all duration-300 absolute -bottom-6"
-      variant="countained"
-      aria-label="Disabled elevation buttons"
+    <motion.div
+      className="absolute -bottom-6"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y:0 }}
+      transition={{type: 'spring', duration: 0.5 }}
     >
-      <Button className="!text-gray-400">
-        <VisibilityIcon />
-      </Button>
-      <Button className="!text-rose-400">
-        <FavoriteIcon />
-      </Button>
-      {sessionId && (
-        <Button
-        onClick={() => handleAddProduct(product.id)}
-          className="!text-blue-400"
-          disabled={isAddBasketLoading}
-        >
-          {isAddBasketLoading && loadingProductId === product.id ? (
-            <CircularProgress size={22} />
-          ) : (
-            <ShoppingCartIcon />
-          )}
+      <ButtonGroup
+        className="mt-5 mb-10 bg-white shadow-lg !rounded-xl transition-all duration-300"
+        variant="countained"
+        aria-label="Disabled elevation buttons"
+      >
+        <Button className="!text-gray-400">
+          <VisibilityIcon />
         </Button>
-      )}
-    </ButtonGroup>
+        <Button className="!text-rose-400">
+          <FavoriteIcon />
+        </Button>
+        {sessionId && (
+          <Button
+            onClick={() => handleAddProduct(product.id)}
+            className="!text-blue-400"
+            disabled={isAddBasketLoading}
+          >
+            {isAddBasketLoading && loadingProductId === product.id ? (
+              <CircularProgress size={22} />
+            ) : (
+              <ShoppingCartIcon />
+            )}
+          </Button>
+        )}
+      </ButtonGroup>
+    </motion.div>
   );
 }
 
