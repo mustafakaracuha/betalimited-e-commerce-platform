@@ -26,7 +26,7 @@ root.render(
       </Routes>
     </Router>
     <ToastContainer
-      position="bottom-right"
+      position="top-center"
       autoClose={1000}
       hideProgressBar={true}
       newestOnTop={false}

@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 import {
   allProducts,
   searchProducts,
@@ -41,9 +43,13 @@ const productsSlice = createSlice({
     increaseCount: (state, action) => {
       const { id } = action.payload;
       const product = state.products.find((item) => item.id === id);
-
+    
       if (product) {
-        product.quantity += 1;
+        if (product.quantity < 20) {
+          product.quantity += 1;
+        } else {
+          toast.warning("Maximum product count reached");
+        }
       }
     },
     decreaseCount: (state, action) => {
