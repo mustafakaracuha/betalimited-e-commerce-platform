@@ -38,10 +38,7 @@ function index({ product }) {
           label={product.discount}
           className=" absolute top-3 left-4"
         />
-        <motion.img
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{type: 'spring', duration: 0.3 }}
+        <img
           className="transition-all duration-300 group-hover:rotate-12 group-hover:scale-110"
           src={
             product.name === "Offer Fruits"
