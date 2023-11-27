@@ -24,6 +24,7 @@ export const searchGetProducts = createAsyncThunk(
   async (searchValue) => {
     try {
       const data = await searchProducts(searchValue);
+      data.map((item) => (item.quantity = 0));
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
