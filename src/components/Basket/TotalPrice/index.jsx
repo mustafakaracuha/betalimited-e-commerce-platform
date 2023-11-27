@@ -1,14 +1,21 @@
 import React from "react";
-import Divider from "@mui/material/Divider";
 import { useSelector } from "react-redux";
 
+import { motion } from "framer-motion";
+
+import Divider from "@mui/material/Divider";
+
+
+
 function index({ myProducts }) {
- 
   const { totalPrice } = useSelector((state) => state.basket);
 
-
   return (
-    <div className="w-[25rem] max-sm:w-[23rem] fixed bottom-10 max-sm:right-7 h-[10rem] bg-gray-100 rounded-xl flex items-start justify-center">
+    <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: -10 }}
+    transition={{ type: "spring", duration: 0.5, delay: 0.3 }}
+    className="w-[25rem] max-sm:w-[23rem] fixed bottom-10 max-sm:right-7 h-[10rem] bg-gray-100 rounded-xl flex items-start justify-center">
       <div className="w-full px-5">
         <div className="flex items-center justify-between">
           <p className="text-lg mt-3 mb-1">Total Price</p>
@@ -34,7 +41,7 @@ function index({ myProducts }) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
