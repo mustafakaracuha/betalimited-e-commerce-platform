@@ -5,7 +5,7 @@
             "destination": "/index.html"
         },
         {
-            "source": "/home",
+            "source": "/products",
             "destination": "/index.html"
         }
     ]

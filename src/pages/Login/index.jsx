@@ -45,7 +45,7 @@ function index() {
         .then((response) => {
           if (response) {
             dispatch(login(values.username));
-            navigate("/home");
+            navigate("/products");
           } else {
             toast.error("Login failed");
           }
