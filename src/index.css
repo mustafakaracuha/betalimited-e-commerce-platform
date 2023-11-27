@@ -52,6 +52,9 @@ border-top-left-radius: 30px !important;
 border-bottom-left-radius: 30px !important;
 }
 
+.MuiInputBase-input + .MuiOutlinedInput-notchedOutline{
+border-radius: 20px !important;
+}
 
 .Toastify__toast {
 border-radius: 20px !important;

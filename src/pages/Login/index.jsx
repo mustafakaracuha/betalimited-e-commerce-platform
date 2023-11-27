@@ -37,7 +37,10 @@ function index() {
   });
 
   const handleSubmit = (values) => {
-    if (values.username.toLowerCase() === "user" && values.password.toLowerCase() === "user") {
+    if (
+      values.username.toLowerCase() === "user" &&
+      values.password.toLowerCase() === "user"
+    ) {
       dispatch(createSession())
         .unwrap()
         .then((response) => {
