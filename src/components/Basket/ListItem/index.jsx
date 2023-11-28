@@ -14,7 +14,7 @@ import {
   getTotalPrice,
 } from "../../../store/features/basket/basketSlice";
 
-function index({ product }) {
+function index({product }) {
   const dispatch = useDispatch();
 
   const calculateTotalPrice = (products) => {
@@ -47,7 +47,7 @@ function index({ product }) {
   };
 
   return (
-    <ListItem disablePadding key={product.id}>
+    <ListItem disablePadding>
       <motion.div
         className="w-full"
         initial={{ opacity: 0, y: -10 }}

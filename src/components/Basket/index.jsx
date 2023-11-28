@@ -88,12 +88,12 @@ function index({ open, setOpenBasket }) {
             >
               {myProducts.map(
                 (product) =>
-                  product.quantity >= 1 && <ListItem product={product} />
+                  product.quantity >= 1 && <ListItem key={product.id} product={product} />
               )}
             </List>
             {myProducts.map(
               (product) =>
-                product.quantity >= 1 && <TotalPrice myProducts={myProducts} />
+                product.quantity >= 1 && <TotalPrice key={product.id} myProducts={myProducts} />
             )}
           </>
         ) : (
